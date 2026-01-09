@@ -6,37 +6,42 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:22:55 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/07 17:44:02 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:05:11 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-
-int	*find_rank(int	**a, int *len_a)
+int	*find_ranks(int **a, int *len_a)
 {
-	int	*rank;
 	int	i;
+	int	*ranks;
 	int	j;
-	int	rnk;
-	int	max;
-	int	min;
-
-	rank = malloc(len_a * sizeof(int));
-	if (!rank)
-		return (NULL); // free a and b in main
+	
 	i = 0;
-	min = (*a)[0];
-	while (i < len_a - 1)
+	ranks = malloc((*len_a) * sizeof(int));
+	if (!ranks)
+		return (NULL);
+	while (i < *len_a)
 	{
-		if ((*a)[i + 1] < (*a)[i])
-			min = (*a)[i + 1];
+		ranks[i] = 1;
+		j = 0;
+		while (j < *len_a)
+		{
+			if (j != i)
+			{
+				if ((*a)[i] > (*a)[j])
+					ranks[i]++;
+			}
+			j++;
+		}
+		//printf("a[%i] rank ranks[%i]: %i\n", i, i, ranks[i]);
 		i++;
 	}
+	return (ranks);
 }
-
-
+/*
 int	main(void)
 {
 	int	*a;
@@ -45,20 +50,28 @@ int	main(void)
 	int	j = 0;
 	int	len_a = 10;
 	int	len_b = 0;
-	int	*rank;
+	int	*ranks;
 
 	a = malloc(10 * sizeof(int));
-	while (i < 10)
+	if (!a)
+		return (0);
+	printf("checkpoint 1\n");
+	while (i < 5)
 	{
-		a[i] = 10 - i;
+		a[i] = (i * 2);
 		i++;
 	}
-
-	rank = find_rank(a);
+	while (i < 10)
+	{
+		a[i] = (10 - i) * 2 + 1;
+		i++;
+	}
+	printf("checkpoint 2\n");
+	ranks = find_ranks(&a, &len_a);
 	while (j < len_a)
 	{
-		printf("%i\n", rank[j]);
+		printf("Ranks: %i\n", ranks[j]);
 		j++;
 	}
 	return (0);
-}
+}*/

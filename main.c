@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:31:52 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/07 13:40:38 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:04:09 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	unsigned int	n_int;
 	int				*array;
+	int				*ranks;
+	int	i = 0;
 
 	n_int = 0;
 	if (argc != 2)
@@ -29,6 +31,12 @@ int	main(int argc, char **argv)
 		array = alloc_fill(array, argv[1], n_int);
 		if (!(dupe_check(array, n_int)))
 			return (error());
+		ranks = find_ranks(&a, &len_a);
+		while (i < n_int)
+		{
+			printf("ranks[%i] is %i\n", i, ranks[i]);
+			i++;
+		}
 	}
 	return (0);
 }
