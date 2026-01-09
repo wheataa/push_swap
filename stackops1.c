@@ -32,32 +32,38 @@ void	ss(int **a, int **b, int len_a, int len_b)
 	sa(b, len_b);
 }
 
-void	pa(int **a, int **b, int *len_a, int *len_b)
+void	pa(int **pushto, int **pushfrom, int *len_pt, int *len_pf)
 {
 	int	i;
+//	printf("\n---INSIDE PA---\n");
+	int j = 0;
+	while (j < *len_pt)
+	{
+//		printf("pushfrom[%i] inside push, before pushing: %i\n", j, (*pushto)[j]);
+		j++;
+	}
 	
-	if (!*len_b)
+	if (!(*len_pf)) //if nothing to push from, return
 		return ;
 	i = 0;
-	while (i < *len_a)
+	while (i < *len_pt) // move down, prepare for incoming push
 	{
-		(*a)[*len_a - i] = (*a)[*len_a - i - 1];
+		(*pushto)[*len_pt - i] = (*pushto)[*len_pt - i - 1];
 		i++;
 	}
+	(*pushto)[0] = (*pushfrom)[0];
 	i = 0;
-	if (*len_b > 0)
-		rra(b, len_b);
-	(*a)[0] = (*b)[0];
-	i = 0;
-	while (i < *len_b - 1)
+	while (i < *len_pf - 1)
 	{
-		(*b)[i] = (*b)[i + 1];
+		(*pushfrom)[i] = (*pushfrom)[i + 1];
 		i++;
 	}
-	(*b)[i] = 0;
-	*len_a++;
-	printf("len_b is %i\n", *len_a);
-	*len_b--;
+	(*pushfrom)[i] = 0;
+	(*len_pt)++;
+//	printf("len_b is %i\n", *len_pt);
+	(*len_pf)--;
+//	printf("len_a is %i\n", *len_pf);
+//	printf("---END PA---\n\n");
 		
 }
 

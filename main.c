@@ -31,7 +31,7 @@ int	check_order(int *ranks, int len_a)
 		}
 		i++;
 	}
-	printf("\n Check is %i\n", check);
+	//printf("\n Check is %i\n", check);
 	return (check);
 }
 
@@ -43,74 +43,93 @@ int	*sort_bit(int *a, int n_int, int bit_pos)
 	int	*b;
 	int	loop = n_int;
 
-	mask = 1;
+	mask = 1 << bit_pos;
 	i = 0;
 	len_b = 0;
 	b = malloc(n_int * sizeof(int));
 	if (!b)
 		return (NULL);
+	while (i < n_int)
+	{
+		b[i] = 0;
+		i++;
+	}
+	i = 0;
 	while (i < loop)
 	{
-		printf("condition a[0] %i  & mask %i, %i\n", a[0], mask, ((a[0] & mask) >> bit_pos));
+		//printf("condition a[0] %i  & mask %i, %i\n", a[0], mask, ((a[0] & mask) >> bit_pos));
 		if (!((a[0] & mask) >> bit_pos))
 		{
-			printf("\nPUSHING\n");
+			//printf("\nSTART PUSHING\n");
 			pa(&b, &a, &len_b, &n_int);
-			printf("b: %i\n", b[0]);
+			printf("pb\n");
+			//printf("b: %i\n", b[0]);
 			int j = 0;
 			while (j < n_int)
 			{
-				printf("a[%i] is %i\n", j, a[j]);
+		//		printf("a[%i] is %i\n", j, a[j]);
 				j++;
 			}
 			j = 0;
-			printf("\n");
-			while (j < n_int)
+			//printf("\n");
+			while (j < len_b)
 			{
-				printf("b[%i] is %i\n", j, b[j]);
+		//		printf("b[%i] is %i\n", j, b[j]);
 				j++;
 			}
+		//	printf("\nEND PUSHING\n");
 		}
 		else
 		{
-			printf("\nROTATING\n");
+		//	printf("\nROTATING\n");
 			ra(&a, &n_int);
+			printf("ra\n");
 			int j = 0;
 			while (j < n_int)
 			{
-				printf("a[%i] is %i\n", j, a[j]);
+		//		printf("a[%i] is %i\n", j, a[j]);
 				j++;
 			}
 			j = 0;
-			printf("\n");
-			while (j < n_int)
+		//	printf("\n");
+			while (j < len_b)
 			{
-				printf("b[%i] is %i\n", j, b[j]);
+		//		printf("b[%i] is %i\n", j, b[j]);
 				j++;
 			}
 		}
 		i++;
 	}
-	printf("\n---b--- %i\n", len_b);
 	i = 0;
-	while (i < len_b)
+	int count_b = len_b;
+	while (i < count_b)
 	{
-		printf("stack b[%i] %i\n", i, b[i]);
-		i++;
-	}
-	i = 0;
-	while (i < len_b)
-	{
+		//printf("Pushing b back to a: a[0] %i and b[0] %i\n", a[0], b[0]);
+		//printf("Pushing b back to a: n_int %i and len_b %i\n", n_int, len_b);
 		pa(&a, &b, &n_int, &len_b);
+		printf("pa\n");
 		i++;
+		int j = 0;
+		while (j < n_int)
+		{
+		//	printf("Post push back step stack a[%i] %i\n", j, a[j]);
+			j++;
+		}
 	}
 	i = 0;
-	printf("\n---SORTING---\n");
 	while (i < n_int)
 	{
-		printf("stack a[%i] %i\n", i, a[i]);
+		//printf("stack a[%i] %i\n", i, a[i]);
 		i++;
 	}
+	//printf("\n");
+	i = 0;
+	while (i < len_b)
+	{
+		//printf("stack b[%i] %i\n", i, b[i]);
+		i++;
+	}
+	//printf("At end of loop, len_a %i and len_b %i\n", n_int, len_b);
 	free(b);
 	return (a);
 }
@@ -142,11 +161,24 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		i = 0;
+		int j = 0;
+		//printf("\n---SORTING---\n");
+		//while (j < 4)
 		while (check_order(ranks, n_int))
 		{
-			ranks = sort_bit(ranks, n_int, i);
+			//printf("\nSTART SORT\n");
+			ranks = sort_bit(ranks, n_int, j);
+			//printf("\nEND SORT\n");
+			//i++;
+			j++;
+		}
+		i = 0;
+		while (i < n_int)
+		{
+			printf("stack a[%i] %i\n", i, ranks[i]);
 			i++;
 		}
+		printf("\n");
 	}
 	return (0);
 }
