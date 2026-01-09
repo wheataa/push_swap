@@ -6,12 +6,13 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:59:31 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/07 17:12:44 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:08:14 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "push_swap.h"
 
 void	sa(int **a, int len_a)
 {
@@ -43,6 +44,9 @@ void	pa(int **a, int **b, int *len_a, int *len_b)
 		(*a)[*len_a - i] = (*a)[*len_a - i - 1];
 		i++;
 	}
+	i = 0;
+	if (*len_b > 0)
+		rra(b, len_b);
 	(*a)[0] = (*b)[0];
 	i = 0;
 	while (i < *len_b - 1)
@@ -52,11 +56,12 @@ void	pa(int **a, int **b, int *len_a, int *len_b)
 	}
 	(*b)[i] = 0;
 	*len_a++;
+	printf("len_b is %i\n", *len_a);
 	*len_b--;
 		
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	*a;
 	int	*b;
@@ -77,11 +82,11 @@ int	main(void)
 		a[i] = 0;
 		i++;
 	}
-	/*while (j < 5)
+	while (j < 5)
 	{
 		b[j] = j + 6;
 		j++;
-	}*/
+	}
 	while (j < 10)
 	{
 		b[j] = 0;
@@ -91,7 +96,7 @@ int	main(void)
 	i = 0;
 	j = 0;
 	//ss(&a, &b);
-	pa(&a, &b, &len_a, &len_b);
+	pa(&b, &a, &len_b, &len_a);
 	printf("a is:\n");
 	while (i < 10)
 	{
@@ -105,4 +110,4 @@ int	main(void)
 		j++;
 	}
 	return (0);
-}
+}*/

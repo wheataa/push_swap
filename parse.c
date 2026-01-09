@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:11:22 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/09 14:00:32 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:08:52 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	*alloc_fill(int *array, char *s, unsigned int n_int)
 	array = malloc((n_int + 1) * sizeof(int));
 	if (!array)
 		return (0);
+	printf("\n----ARRAY----\n");
 	while (*s)
 	{
 		array[count] = ps_atoi(&(*s));

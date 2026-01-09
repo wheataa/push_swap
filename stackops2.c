@@ -6,12 +6,13 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:59:31 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/07 17:44:23 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:03:11 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "push_swap.h"
 
 void	ra(int	**a, int *len_a)
 {
@@ -59,7 +60,7 @@ void	rrr(int **a, int **b, int *len_a, int *len_b)
 	rra(b, len_b);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	*a;
 	int	*b;
@@ -107,4 +108,4 @@ int	main(void)
 		j++;
 	}
 	return (0);
-}
+}*/
