@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:31:52 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/09 18:08:07 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/12 12:42:14 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,17 +147,17 @@ int	main(int argc, char **argv)
 	else
 	{
 		n_int = count_int(argv[1]);
-		printf("%i\n", n_int);
+		//printf("%i\n", n_int);
 		if (!n_int)
 			return (0);
 		array = alloc_fill(array, argv[1], n_int);
 		if (!(dupe_check(array, n_int)))
 			return (error());
 		ranks = find_ranks(&array, &n_int);
-		printf("\n----RANKS---- \n");
+		//printf("\n----RANKS---- \n");
 		while (i < n_int)
 		{
-			printf("ranks[%i] is %i\n", i, ranks[i]);
+		//	printf("ranks[%i] is %i\n", i, ranks[i]);
 			i++;
 		}
 		i = 0;
@@ -175,10 +175,12 @@ int	main(int argc, char **argv)
 		i = 0;
 		while (i < n_int)
 		{
-			printf("stack a[%i] %i\n", i, ranks[i]);
+		//	printf("stack a[%i] %i\n", i, ranks[i]);
 			i++;
 		}
-		printf("\n");
+		//printf("\n");
+		free(ranks);
+		free(array);
 	}
 	return (0);
 }
