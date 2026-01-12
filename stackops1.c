@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:59:31 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/09 18:08:14 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:51:15 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	sa(int **a, int len_a)
+void	swap(int **a, int len_a)
 {
 	int	temp;
 
@@ -23,30 +23,22 @@ void	sa(int **a, int len_a)
 	temp = *a[0];
 	(*a)[0] = (*a)[1];
 	(*a)[1] = temp;
-
 }
 
 void	ss(int **a, int **b, int len_a, int len_b)
 {
-	sa(a, len_a);
-	sa(b, len_b);
+	swap(a, len_a);
+	swap(b, len_b);
 }
 
-void	pa(int **pushto, int **pushfrom, int *len_pt, int *len_pf)
+void	push(int **pushto, int **pushfrom, int *len_pt, int *len_pf)
 {
 	int	i;
-//	printf("\n---INSIDE PA---\n");
-	int j = 0;
-	while (j < *len_pt)
-	{
-//		printf("pushfrom[%i] inside push, before pushing: %i\n", j, (*pushto)[j]);
-		j++;
-	}
-	
-	if (!(*len_pf)) //if nothing to push from, return
+
+	if (!(*len_pf))
 		return ;
 	i = 0;
-	while (i < *len_pt) // move down, prepare for incoming push
+	while (i < *len_pt)
 	{
 		(*pushto)[*len_pt - i] = (*pushto)[*len_pt - i - 1];
 		i++;
@@ -60,11 +52,7 @@ void	pa(int **pushto, int **pushfrom, int *len_pt, int *len_pf)
 	}
 	(*pushfrom)[i] = 0;
 	(*len_pt)++;
-//	printf("len_b is %i\n", *len_pt);
 	(*len_pf)--;
-//	printf("len_a is %i\n", *len_pf);
-//	printf("---END PA---\n\n");
-		
 }
 
 /*int	main(void)

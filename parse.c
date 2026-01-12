@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:11:22 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/12 11:59:48 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:47:11 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,14 @@ int	*alloc_fill(int *array, char *s, unsigned int n_int)
 	array = malloc((n_int + 1) * sizeof(int));
 	if (!array)
 		return (0);
-	//printf("\n----ARRAY----\n");
 	while (*s)
 	{
 		array[count] = ps_atoi(&(*s));
 		while (*s == '-' || (*s >= '0' && *s <= '9'))
 			s++;
-	//	printf("array[%i] is %i\n", count, array[count]);
 		if (*s)
 			s++;
 		count++;
 	}
-	array[count] = 0;
 	return (array);
 }

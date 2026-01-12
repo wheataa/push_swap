@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:59:31 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/09 18:03:11 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:51:54 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	ra(int	**a, int *len_a)
+void	rotate(int **a, int *len_a)
 {
 	int	temp;
 	int	i;
@@ -33,11 +33,11 @@ void	ra(int	**a, int *len_a)
 
 void	rr(int	**a, int **b, int *len_a, int *len_b)
 {
-	ra(a, len_a);
-	ra(b, len_b);
+	rotate(a, len_a);
+	rotate(b, len_b);
 }
 
-void	rra(int **a, int *len_a)
+void	rrotate(int **a, int *len_a)
 {
 	int	temp;
 	int	i;
@@ -56,8 +56,8 @@ void	rra(int **a, int *len_a)
 
 void	rrr(int **a, int **b, int *len_a, int *len_b)
 {
-	rra(a, len_a);
-	rra(b, len_b);
+	rrotate(a, len_a);
+	rrotate(b, len_b);
 }
 
 /*int	main(void)

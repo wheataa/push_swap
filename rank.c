@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:22:55 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/12 12:00:44 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:35:56 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*find_ranks(int **a, int *len_a)
 	int	i;
 	int	*ranks;
 	int	j;
-	
+
 	i = 0;
 	ranks = malloc((*len_a) * sizeof(int));
 	if (!ranks)
@@ -36,7 +36,6 @@ int	*find_ranks(int **a, int *len_a)
 			}
 			j++;
 		}
-		//printf("a[%i] rank ranks[%i]: %i\n", i, i, ranks[i]);
 		i++;
 	}
 	return (ranks);
