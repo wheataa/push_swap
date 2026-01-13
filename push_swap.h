@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 int			error(void);
 int			dupe_check(int *array, int n_int);

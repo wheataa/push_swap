@@ -21,6 +21,7 @@ void	swap(int **a, int len_a)
 	temp = *a[0];
 	(*a)[0] = (*a)[1];
 	(*a)[1] = temp;
+	write(1, "sa\n", 3);
 }
 
 void	ss(int **a, int **b, int len_a, int len_b)

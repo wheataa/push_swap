@@ -52,7 +52,7 @@ int	*sort_bit(int *a, int n_int, int bit_pos)
 		if (!(a[0] & (1 << bit_pos)))
 			(push(&b, &a, &len_b, &n_int), write(1, "pb\n", 3));
 		else
-			(rotate(&a, &n_int), write(1, "ra\n", 3));
+			rotate(&a, &n_int);
 	}
 	i = 0;
 	loop = len_b;
@@ -67,10 +67,9 @@ int	main(int argc, char **argv)
 	int	n_int;
 	int	*array;
 	int	*ranks;
-	int	i;
-
+	//int	i;
 	array = NULL;
-	i = 0;
+	//i = 0;
 	n_int = 0;
 	if (argc >= 2)
 	{
@@ -84,6 +83,8 @@ int	main(int argc, char **argv)
 			return (error());
 		ranks = find_ranks(&array, &n_int);
 		ranks = sort4(ranks, n_int);
+		//while (i++ < n_int)
+		//	printf("ranks[%i] %i\n", i-1, ranks[i-1]);
 		//while (check_order(ranks, n_int))
 		//	ranks = sort_bit(ranks, n_int, i++);
 		(free(ranks), free(array));

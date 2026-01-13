@@ -27,6 +27,7 @@ void	rotate(int **a, int *len_a)
 		i++;
 	}
 	(*a)[i] = temp;
+	write(1, "ra\n", 3);
 }
 
 void	rr(int	**a, int **b, int *len_a, int *len_b)
@@ -50,6 +51,7 @@ void	rrotate(int **a, int *len_a)
 		i++;
 	}
 	(*a)[0] = temp;
+	write(1, "rra\n", 4);
 }
 
 void	rrr(int **a, int **b, int *len_a, int *len_b)
