@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:31:52 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/13 13:33:54 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:01:16 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ int	main(int argc, char **argv)
 		if (!(dupe_check(array, n_int)))
 			return (error());
 		ranks = find_ranks(&array, &n_int);
-		while (check_order(ranks, n_int))
-			ranks = sort_bit(ranks, n_int, i++);
+		ranks = sort4(ranks, n_int);
+		//while (check_order(ranks, n_int))
+		//	ranks = sort_bit(ranks, n_int, i++);
 		(free(ranks), free(array));
 	}
 	return (0);

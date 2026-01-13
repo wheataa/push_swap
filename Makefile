@@ -6,7 +6,7 @@
 #    By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/13 11:59:03 by jwheatin          #+#    #+#              #
-#    Updated: 2026/01/13 13:13:14 by jwheatin         ###   ########.fr        #
+#    Updated: 2026/01/13 17:12:03 by jwheatin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = main.c\
       parse2.c\
       stackops1.c\
       stackops2.c\
+      sort5.c
 
 OBJ = $(SRC:.c=.o)
 
