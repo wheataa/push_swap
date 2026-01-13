@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:22:55 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/13 13:43:19 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/13 14:57:20 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	*alloc_fill2(int *array, char **s, int n_int)
 		{
 			if (ps_atoi(&(s[i][j])) == -2147483649)
 				return (free(array), NULL);
-			array[i - 1] = ps_atoi(&s[i][j]);
+			array[i - 1] = (int)ps_atoi(&s[i][j]);
 			while (s[i][j] == '-' || (s[i][j] >= '0' && s[i][j] <= '9'))
 				j++;
 			if (s[i][j])
@@ -82,7 +82,7 @@ int	*alloc_fill1(int *array, char *s, int n_int)
 	{
 		if (ps_atoi(&(*s)) == -2147483649)
 			return (free(array), NULL);
-		array[count] = ps_atoi(&(*s));
+		array[count] = (int)ps_atoi(&(*s));
 		while (*s == '-' || (*s >= '0' && *s <= '9'))
 			s++;
 		if (*s)
