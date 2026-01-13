@@ -1,17 +1,96 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rank.c                                             :+:      :+:    :+:   */
+/*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:22:55 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/12 14:35:56 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:43:19 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "push_swap.h"
+
+int	dupe_check(int	*array, int n_int)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < n_int - 1)
+	{
+		j = i + 1;
+		while (j < n_int)
+		{
+			if (array[i] == array[j])
+			{
+				free(array);
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	*choose_alloc(int *array, char **s, int n_int, int n_argc)
+{
+	if (n_argc == 2)
+		return (alloc_fill1(array, s[1], n_int));
+	else
+		return (alloc_fill2(array, s, n_int));
+}
+
+int	*alloc_fill2(int *array, char **s, int n_int)
+{
+	int			i;
+	int			j;
+
+	i = 1;
+	array = malloc(n_int * sizeof(int));
+	if (!array)
+		return (0);
+	while (i <= n_int)
+	{
+		j = 0;
+		while (s[i][j])
+		{
+			if (ps_atoi(&(s[i][j])) == -2147483649)
+				return (free(array), NULL);
+			array[i - 1] = ps_atoi(&s[i][j]);
+			while (s[i][j] == '-' || (s[i][j] >= '0' && s[i][j] <= '9'))
+				j++;
+			if (s[i][j])
+				j++;
+		}
+		i++;
+	}
+	return (array);
+}
+
+int	*alloc_fill1(int *array, char *s, int n_int)
+{
+	int			count;
+
+	count = 0;
+	array = malloc(n_int * sizeof(int));
+	if (!array)
+		return (0);
+	while (*s)
+	{
+		if (ps_atoi(&(*s)) == -2147483649)
+			return (free(array), NULL);
+		array[count] = ps_atoi(&(*s));
+		while (*s == '-' || (*s >= '0' && *s <= '9'))
+			s++;
+		if (*s)
+			s++;
+		count++;
+	}
+	return (array);
+}
 
 int	*find_ranks(int **a, int *len_a)
 {

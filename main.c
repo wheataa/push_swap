@@ -6,7 +6,7 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:31:52 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/12 16:53:46 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:33:54 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,17 @@ int	main(int argc, char **argv)
 	int	*ranks;
 	int	i;
 
+	array = NULL;
 	i = 0;
 	n_int = 0;
-	if (argc != 2)
-		write(1, "Error \n", 7);
-	else
+	if (argc >= 2)
 	{
-		n_int = count_int(argv[1]);
+		n_int = choose_count(argc, argv);
 		if (!n_int)
 			return (0);
-		array = alloc_fill(array, argv[1], n_int);
+		array = choose_alloc(array, argv, n_int, argc);
+		if (!(array))
+			return (error());
 		if (!(dupe_check(array, n_int)))
 			return (error());
 		ranks = find_ranks(&array, &n_int);

@@ -6,12 +6,10 @@
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:59:31 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/12 16:51:15 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/13 12:37:43 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "push_swap.h"
 
 void	swap(int **a, int len_a)

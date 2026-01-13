@@ -1,52 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwheatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:11:22 by jwheatin          #+#    #+#             */
-/*   Updated: 2026/01/12 16:47:11 by jwheatin         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:45:23 by jwheatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "push_swap.h"
 
 int	error(void)
 {
-	write(1, "Error \n", 7);
+	write(1, "Error\n", 6);
 	return (0);
 }
 
-int	dupe_check(int	*array, int n_int)
+int	choose_count(int n_argc, char **s)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < n_int - 1)
-	{
-		j = i + 1;
-		while (j < n_int)
-		{
-			if (array[i] == array[j])
-			{
-				free(array);
-				return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
+	if (n_argc == 2)
+		return (count_int(s[1]));
+	else
+		return (count_arg(s));
 }
 
-unsigned int	count_int(char const *s)
+int	count_int(char *s)
 {
-	unsigned int	i;
-	unsigned int	count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -72,10 +55,34 @@ unsigned int	count_int(char const *s)
 	return (count);
 }
 
-int	ps_atoi(char *s)
+int	count_arg(char **s)
 {
-	int		sign;
-	size_t	num;
+	int	i;
+	int	j;
+
+	i = 1;
+	while (s[i])
+	{
+		j = 0;
+		if (s[i][j] && s[i][j] != '-' && !(s[i][j] >= '0' && s[i][j] <= '9'))
+			return (error());
+		j++;
+		while (s[i][j])
+		{
+			if (s[i][j] >= '0' && s[i][j] <= '9')
+				j++;
+			else
+				return (error());
+		}
+		i++;
+	}
+	return (i - 1);
+}
+
+long int	ps_atoi(char *s)
+{
+	int			sign;
+	long int	num;
 
 	num = 0;
 	sign = 1;
@@ -87,29 +94,9 @@ int	ps_atoi(char *s)
 	while (*s >= '0' && *s <= '9')
 	{
 		num = (num * 10) + (*s - '0');
+		if (num < -2147483648 || num > 2147483647)
+			return (-2147483649);
 		s++;
 	}
 	return (num * sign);
-}
-
-int	*alloc_fill(int *array, char *s, unsigned int n_int)
-{
-	unsigned int	i;
-	int				count;
-	int				sign;
-
-	count = 0;
-	array = malloc((n_int + 1) * sizeof(int));
-	if (!array)
-		return (0);
-	while (*s)
-	{
-		array[count] = ps_atoi(&(*s));
-		while (*s == '-' || (*s >= '0' && *s <= '9'))
-			s++;
-		if (*s)
-			s++;
-		count++;
-	}
-	return (array);
 }
