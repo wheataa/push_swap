@@ -14,8 +14,8 @@
 
 int	error(void)
 {
-	write(1, "Error\n", 6);
-	return (0);
+	write(2, "Error\n", 6);
+	return (-1);
 }
 
 int	choose_count(int n_argc, char **s)
@@ -33,7 +33,7 @@ int	count_int(char *s)
 
 	i = 0;
 	count = 0;
-	if (s[i] && s[i] != '-' && !(s[i] >= '0' && s[i] <= '9'))
+	if (!s[i] || (s[i] != '-' && !(s[i] >= '0' && s[i] <= '9')))
 		return (error());
 	count++;
 	while (s[i])

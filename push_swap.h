@@ -36,6 +36,10 @@ int			choose_count(int n_argc, char **s);
 int			*choose_alloc(int *array, char **s, int n_int, int n_argc);
 int			*sort3(int *ranks, int n_int);
 int			*sort4(int *ranks, int n_int);
-//int			*sort5(int *ranks);
+int			*sort5(int *ranks, int n_int);
+void		find_one(int **ranks, int n_int);
+void		find_two(int **ranks, int n_int);
+int			*choose_sort(int *ranks, int n_int);
+int			*check_return(int *ranks, int *b, int n_int, int len_b);
 
 #endif

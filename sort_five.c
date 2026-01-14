@@ -12,16 +12,33 @@
 
 #include "push_swap.h"
 
-/*int	*sort5(int *ranks)
+int	*sort5(int *ranks, int n_int)
 {
-	push 1 and 2 to b
-	sort a using sort 3. 
-	swap b if needed
-	push back
+	int	*b;
+	int	len_b;
+	int	i;
 
-}*/
+	len_b = 0;
+	find_one(&ranks, n_int);
+	if (!check_order(ranks, n_int))
+		return (ranks);
+	b = malloc(2 * sizeof(int));
+	if (!b)
+		return (NULL);
+	(push(&b, &ranks, &len_b, &n_int), write(1, "pb\n", 3));
+	find_two(&ranks, n_int);
+	if (!check_order(ranks, n_int))
+		return (check_return(ranks, b, n_int, len_b));
+	(push(&b, &ranks, &len_b, &n_int), write(1, "pb\n", 3));
+	i = 0;
+	while (i++ < 3)
+		ranks[i - 1] -= 2;
+	ranks = sort3(ranks, n_int);
+	while (i-- > 1)
+		ranks[i - 1] += 2;
+	return (check_return(ranks, b, n_int, len_b));
+}
 
-// add write commands
 int	*sort4(int *ranks, int n_int)
 {
 	int	*b;
@@ -47,9 +64,7 @@ int	*sort4(int *ranks, int n_int)
 	ranks = sort3(ranks, n_int);
 	while (i-- > 1)
 		ranks[i - 1]++;
-	(push(&ranks, &b, &n_int, &len_b), write(1, "pa\n", 3));
-	free(b);
-	return (ranks);
+	return (check_return(ranks, b, n_int, len_b));
 }
 
 int	*sort3(int *ranks, int n_int)

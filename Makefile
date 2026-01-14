@@ -20,7 +20,8 @@ SRC = main.c\
       parse2.c\
       stackops1.c\
       stackops2.c\
-      sort5.c
+      sort_five.c\
+      sort_five_utils.c
 
 OBJ = $(SRC:.c=.o)
 
