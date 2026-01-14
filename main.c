@@ -89,14 +89,13 @@ int	main(int argc, char **argv)
 	int	*array;
 	int	*ranks;
 
-	array = NULL;
 	n_int = 0;
 	if (argc >= 2)
 	{
 		n_int = choose_count(argc, argv);
 		if (n_int == -1)
 			return (-1);
-		array = choose_alloc(array, argv, n_int, argc);
+		array = choose_alloc(argv, n_int, argc);
 		if (!(array))
 			return (error());
 		if (!(dupe_check(array, n_int)))

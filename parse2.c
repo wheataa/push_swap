@@ -35,18 +35,19 @@ int	dupe_check(int	*array, int n_int)
 	return (1);
 }
 
-int	*choose_alloc(int *array, char **s, int n_int, int n_argc)
+int	*choose_alloc(char **s, int n_int, int n_argc)
 {
 	if (n_argc == 2)
-		return (alloc_fill1(array, s[1], n_int));
+		return (alloc_fill1(s[1], n_int));
 	else
-		return (alloc_fill2(array, s, n_int));
+		return (alloc_fill2(s, n_int));
 }
 
-int	*alloc_fill2(int *array, char **s, int n_int)
+int	*alloc_fill2(char **s, int n_int)
 {
-	int			i;
-	int			j;
+	int	i;
+	int	j;
+	int	*array;
 
 	i = 1;
 	array = malloc(n_int * sizeof(int));
@@ -70,9 +71,10 @@ int	*alloc_fill2(int *array, char **s, int n_int)
 	return (array);
 }
 
-int	*alloc_fill1(int *array, char *s, int n_int)
+int	*alloc_fill1(char *s, int n_int)
 {
-	int			count;
+	int	count;
+	int	*array;
 
 	count = 0;
 	array = malloc(n_int * sizeof(int));
