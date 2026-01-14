@@ -12,49 +12,49 @@
 
 #include "push_swap.h"
 
-void	rotate(int **a, int *len_a)
+void	rotate(int *a, int len_a)
 {
 	int	temp;
 	int	i;
 
-	if (*len_a <= 1)
+	if (len_a <= 1)
 		return ;
 	i = 0;
-	temp = (*a)[0];
-	while (i < *len_a - 1)
+	temp = a[0];
+	while (i < len_a - 1)
 	{
-		(*a)[i] = (*a)[i + 1];
+		a[i] = a[i + 1];
 		i++;
 	}
-	(*a)[i] = temp;
+	a[i] = temp;
 	write(1, "ra\n", 3);
 }
 
-void	rr(int	**a, int **b, int *len_a, int *len_b)
+void	rr(int	*a, int *b, int len_a, int len_b)
 {
 	rotate(a, len_a);
 	rotate(b, len_b);
 }
 
-void	rrotate(int **a, int *len_a)
+void	rrotate(int *a, int len_a)
 {
 	int	temp;
 	int	i;
 
-	if (*len_a <= 1)
+	if (len_a <= 1)
 		return ;
 	i = 0;
-	temp = (*a)[*len_a - 1];
-	while (i < *len_a - 1)
+	temp = a[len_a - 1];
+	while (i < len_a - 1)
 	{
-		(*a)[*len_a - i - 1] = (*a)[*len_a - i - 2];
+		a[len_a - i - 1] = a[len_a - i - 2];
 		i++;
 	}
-	(*a)[0] = temp;
+	a[0] = temp;
 	write(1, "rra\n", 4);
 }
 
-void	rrr(int **a, int **b, int *len_a, int *len_b)
+void	rrr(int *a, int *b, int len_a, int len_b)
 {
 	rrotate(a, len_a);
 	rrotate(b, len_b);

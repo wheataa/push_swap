@@ -50,14 +50,14 @@ int	*sort_bit(int *a, int n_int, int bit_pos)
 	while (i++ < loop)
 	{
 		if (!(a[0] & (1 << bit_pos)))
-			(push(&b, &a, &len_b, &n_int), write(1, "pb\n", 3));
+			(push(b, a, &len_b, &n_int), write(1, "pb\n", 3));
 		else
-			rotate(&a, &n_int);
+			rotate(a, n_int);
 	}
 	i = 0;
 	loop = len_b;
 	while (i++ < loop)
-		(push(&a, &b, &n_int, &len_b), write(1, "pa\n", 3));
+		(push(a, b, &n_int, &len_b), write(1, "pa\n", 3));
 	free(b);
 	return (a);
 }
@@ -67,7 +67,7 @@ int	*choose_sort(int *ranks, int n_int)
 	int	i;
 
 	if (n_int == 2)
-		swap(&ranks, n_int);
+		swap(ranks, n_int);
 	else if (n_int == 3)
 		ranks = sort3(ranks, n_int);
 	else if (n_int == 4)
@@ -78,7 +78,7 @@ int	*choose_sort(int *ranks, int n_int)
 	{
 		i = 0;
 		while (check_order(ranks, n_int))
-			ranks = sort_bit(ranks, n_int, i++);
+			sort_bit(ranks, n_int, i++);
 	}
 	return (ranks);
 }
@@ -101,9 +101,13 @@ int	main(int argc, char **argv)
 			return (error());
 		if (!(dupe_check(array, n_int)))
 			return (error());
-		ranks = find_ranks(&array, &n_int);
+		ranks = find_ranks(array, n_int);
 		while (check_order(ranks, n_int))
+		{
+			if (!ranks)
+				return (free(array), 0);
 			ranks = choose_sort(ranks, n_int);
+		}
 		(free(ranks), free(array));
 	}
 	return (0);

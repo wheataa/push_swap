@@ -92,25 +92,25 @@ int	*alloc_fill1(int *array, char *s, int n_int)
 	return (array);
 }
 
-int	*find_ranks(int **a, int *len_a)
+int	*find_ranks(int *a, int len_a)
 {
 	int	i;
 	int	*ranks;
 	int	j;
 
 	i = 0;
-	ranks = malloc((*len_a) * sizeof(int));
+	ranks = malloc((len_a) * sizeof(int));
 	if (!ranks)
 		return (NULL);
-	while (i < *len_a)
+	while (i < len_a)
 	{
 		ranks[i] = 1;
 		j = 0;
-		while (j < *len_a)
+		while (j < len_a)
 		{
 			if (j != i)
 			{
-				if ((*a)[i] > (*a)[j])
+				if (a[i] > a[j])
 					ranks[i]++;
 			}
 			j++;

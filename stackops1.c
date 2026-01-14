@@ -12,25 +12,25 @@
 
 #include "push_swap.h"
 
-void	swap(int **a, int len_a)
+void	swap(int *a, int len_a)
 {
 	int	temp;
 
 	if (len_a <= 1)
 		return ;
-	temp = *a[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = temp;
+	temp = a[0];
+	a[0] = a[1];
+	a[1] = temp;
 	write(1, "sa\n", 3);
 }
 
-void	ss(int **a, int **b, int len_a, int len_b)
+void	ss(int *a, int *b, int len_a, int len_b)
 {
 	swap(a, len_a);
 	swap(b, len_b);
 }
 
-void	push(int **pushto, int **pushfrom, int *len_pt, int *len_pf)
+void	push(int *pushto, int *pushfrom, int *len_pt, int *len_pf)
 {
 	int	i;
 
@@ -39,17 +39,17 @@ void	push(int **pushto, int **pushfrom, int *len_pt, int *len_pf)
 	i = 0;
 	while (i < *len_pt)
 	{
-		(*pushto)[*len_pt - i] = (*pushto)[*len_pt - i - 1];
+		pushto[*len_pt - i] = pushto[*len_pt - i - 1];
 		i++;
 	}
-	(*pushto)[0] = (*pushfrom)[0];
+	pushto[0] = pushfrom[0];
 	i = 0;
 	while (i < *len_pf - 1)
 	{
-		(*pushfrom)[i] = (*pushfrom)[i + 1];
+		pushfrom[i] = pushfrom[i + 1];
 		i++;
 	}
-	(*pushfrom)[i] = 0;
+	pushfrom[i] = 0;
 	(*len_pt)++;
 	(*len_pf)--;
 }
