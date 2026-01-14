@@ -60,15 +60,31 @@ A ranks array is allocated. The existing array of integers is looped through and
 
 ## Stack Operations
 
-Functions are included for stack operations. Depending on whether or not certain operations are used only on stack a or on both stacks, the written operations may or may not be included within the stack operation functions.
+Functions are included for stack operations. Depending on whether or not certain operations are used only on stack a or on both stacks, the written output of the operation may or may not be included within the stack operation functions.
 
-Many use pointers to the length of stacks so that the lengths are updated.
+Pointers to length of array are used in push so that the lengths of stack a and b can be updated.
+
+No memory allocation or freeing is done within stack operations. Stacks a and b are allocated as length of stack a at start and the number of elements in each stack is kept track of.
 
 ## Sorting
 
+In choose_sort, the sorting process is selected.
+
 ### Five or Fewer Integers
 
+If there are two elements, they are swapped.
+
+If there are three elements, sort3 is used.
+
+If there are four elements, sort4 is used - rank 1 is found and pushed to b. a is then sorted using sort3. Element in b is then pushed back.
+
+If there are five elements, sort5 is used - rank 1 and 2 are found and pushed to b. a is then sorted using sort3. Elements in b are then pushed back.
+
+b is allocated and freed within sort4 and sort5. It is unnecessary for sort3.
+
 ### More than Five Integers
+
+For more than five elements, a version of Radix sort is used. As we only have two stacks, we sort by looking at the bits of the integers (i.e. in their binary format) using bit shifting. We look at the rightermost bit first, and if it is 0, push to b. Loop through a doing this. Then we push everything back from b to a. This process is repeated until the correct order is obtained - the condition of the while loop checks whether stack a is in ascending order or not. b is freed after each loop.
 
 # Potential Improvements
 Linked lists would allow: 
@@ -81,3 +97,5 @@ Better sorting algorithms:
 - Turk's: especially developed for 42 push_swap by 42 student.
 - Longest increasing subsequence.
 - Adaptive amendments to current Radix.
+
+Allocate b in choose_sort as opposed to in each sort function.
