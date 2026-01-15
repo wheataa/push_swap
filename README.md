@@ -35,6 +35,10 @@ The Makefile contains standard rules: $(NAME), all, clean, fclean, re.
 
 # Resources
 
+https://en.wikipedia.org/wiki/Integer_sorting
+https://www.geeksforgeeks.org/c/extract-bits-in-c/
+https://www.youtube.com/watch?v=Y95a-8oNqps
+
 # Implementation
 
 The overall structure of the code is:
