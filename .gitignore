@@ -3,3 +3,4 @@ checker_linux
 push_swap
 bit_shift.c
 Push-Swap-Tester
+*.sh
