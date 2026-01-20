@@ -24,8 +24,14 @@ The program is then run by using the program name followed by the integer inputs
 ```
 You can also set the arguments as an environment variable and then run the program using that. For example:
 ```
-ARG=$(shuf -i 0-250)
+ARG=$(seq -250 249 | shuf | tr '\n' ' ' | sed 's/ $//')
 ./push_swap $ARG
+```
+There are issues when using shuf or seq without removing the space at the end in zsh environment, but not bash. Can try this:
+```
+setopt SH_WORD_SPLIT
+./push_swap $ARG | ./checker_linux $ARG
+unsetopt SH_WORD_SPLIT
 ```
 The output can be tested by piping it to the checker:
 ```
